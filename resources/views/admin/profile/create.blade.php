@@ -11,6 +11,13 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>プロフィール新規作成</h2>
+                <form action="{{ action('Admin\ProfileController@create') }}" method="post">
+                    <input type="text" name="name" value="氏名">
+                    <input type="text" name="gender" value="性別">
+                    <input type="text" name="hobby" value="趣味">
+                    <input type="text" name="introduction" value="自己紹介欄">
+                    <input type="submit" name="送信">
+                </form>
             </div>
         </div>
     </div>
