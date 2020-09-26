@@ -23,7 +23,8 @@
                     性別：<input type="text" name="gender" value="">
                     趣味：<input type="text" name="hobby" value="">
                     自己紹介欄：<textarea name="introduction" rows="4" cols="40"></textarea>
-                    <input type="submit" name="投稿">
+                    {{ csrf_field() }}
+                    <input type="submit" value="投稿">
                 </form>
             </div>
         </div>
