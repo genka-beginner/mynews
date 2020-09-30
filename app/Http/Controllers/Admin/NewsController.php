@@ -64,6 +64,7 @@ class NewsController extends Controller
         $this->validate($request, News::$rules);
         $news = News::find($request->id);
         $news_form = $request->all();
+        
         if ($request->remove == 'true') {
             $news_form['image_path'] = null;
         } elseif ($request->file('image')) {
@@ -72,16 +73,25 @@ class NewsController extends Controller
         } else {
             $news_form['image_path'] = $news->image_path;
         }
-
+        //$news_form(フォームから送信されてきたリクエスト)内の_token、image、removeを削除
         unset($news_form['_token']);
         unset($news_form['image']);
         unset($news_form['remove']);
+        
+        //保存
         $news->fill($news_form)->save();
 
         // 以下を追記
+        //$historyにHistoryテーブルのインスタンスを代入
         $history = new History;
+        
+        //Historyテーブルのnews_idにNewsテーブルのidを記録
         $history->news_id = $news->id;
+        
+        //Historyテーブルのedited_atに現在時刻を記録
         $history->edited_at = Carbon::now();
+        
+        //Historyテーブルを保存
         $history->save();
 
         return redirect('admin/news/');
