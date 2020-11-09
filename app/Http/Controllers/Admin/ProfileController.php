@@ -48,21 +48,6 @@ class ProfileController extends Controller
         //変数profile_formにフォームから送信されてきた内容をすべて代入する
         $profile_form = $request->all();
         
-        // フォームから送信されてきた_tokenを削除する
-        unset($profile_form['_token']);
-        
-        // データベースに保存する
-        $profile->fill($profile_form);
-        $profile->save();
-        
-        $this->validate($request, Profile::$rules);
-        
-        //変数profileにフォームから送信されてきたリクエスト内のidがProfileテーブル内にあるかを検索結果を代入
-        $profile = Profile::find($request->id);
-        
-        //変数profile_formにフォームから送信されてきた内容をすべて代入する
-        $profile_form = $request->all();
-        
 	    // フォームから送信されてきた_tokenを削除する
         unset($profile_form['_token']);
 	 
