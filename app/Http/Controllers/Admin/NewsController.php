@@ -81,7 +81,6 @@ class NewsController extends Controller
         //保存
         $news->fill($news_form)->save();
 
-        // 以下を追記
         //$historyにHistoryテーブルのインスタンスを代入
         $history = new History;
         

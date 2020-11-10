@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
-use Carbon\Carbon;
 use App\ProfileHistory;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
-    public function add()
-    {
-        return view('admin.profile.create');
+    public function add(){
+      return view('admin.profile.create');
     }
 
      public function create(Request $request){
@@ -55,16 +53,16 @@ class ProfileController extends Controller
         $profile->fill($profile_form);
         $profile->save();
 
-  	    //$historyにHistoryテーブルのインスタンスを代入
-        $history = new ProfileHistory;
+  	    //$historyにprofilehistoriesテーブルのインスタンスを代入
+        $history = new profilehistories;
         
-        //Historyテーブルのnews_idにNewsテーブルのidを記録
+        //profilehistoriesテーブルのnews_idにNewsテーブルのidを記録
         $history->profile_id = $profile->id;
         
-        //Historyテーブルのedited_atに現在時刻を記録
+        //profilehistoriesテーブルのedited_atに現在時刻を記録
         $history->edited_at = Carbon::now();
         
-        //Historyテーブルを保存
+        //profilehistoriesテーブルを保存
         $history->save();
 
         return redirect('admin/profile/');
