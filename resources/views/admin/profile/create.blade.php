@@ -33,6 +33,14 @@
                             <input type="radio" name="gender" value="female" {{ old('gender') }}>女性
                         </div>
                     </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-md-2">趣味</label>
+                        <div class="col-md-10">
+                            <textarea name="hobby" rows="3" cols="40" value="{{ old('introduction') }}"></textarea>
+                        </div>
+                    </div>
+                    
                     <div class="form-group row">
                         <label class="col-md-2">自己紹介</label>
                         <div class="col-md-10">
@@ -40,7 +48,7 @@
                         </div>
                     </div>
                     {{ csrf_field() }}
-                    <input type="submit" value="投稿">
+                    <input type="submit" value="登録">
                 </form>
             </div>
         </div>

@@ -54,7 +54,7 @@ class ProfileController extends Controller
         $profile->save();
 
   	    //$historyにprofilehistoriesテーブルのインスタンスを代入
-        $history = new profilehistories;
+        $history = new ProfileHistory;
         
         //profilehistoriesテーブルのnews_idにNewsテーブルのidを記録
         $history->profile_id = $profile->id;
@@ -65,6 +65,6 @@ class ProfileController extends Controller
         //profilehistoriesテーブルを保存
         $history->save();
 
-        return redirect('admin/profile/');
+        return redirect('admin/profile/create');
   }
 }
