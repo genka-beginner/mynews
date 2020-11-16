@@ -7,20 +7,9 @@
             <div class="row">
                 <div class="headline col-md-10 mx-auto">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="caption mx-auto">
-                                <div class="image">
-                                    @if ($headline->image_path)
-                                        <img src="{{ asset('storage/image/' . $headline->image_path) }}">
-                                    @endif
-                                </div>
-                                <div class="title p-2">
-                                    <h1>{{ str_limit($headline->title, 70) }}</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="body mx-auto">{{ str_limit($headline->body, 650) }}</p>
+                       <div class="title">
+                           <h2>プロフィール一覧</h2>
+                               
                         </div>
                     </div>
                 </div>
@@ -37,7 +26,10 @@
                                     {{ $post->updated_at->format('Y年m月d日') }}
                                 </div>
                                 <div class="name">
-                                    {{ "名前：".str_limit($post->title, 150) }}
+                                    {{ "名前：".str_limit($post->name, 150) }}
+                                </div>
+                                <div class="name">
+                                    {{ "趣味：".str_limit($post->hobby, 150) }}
                                 </div>
                                 <div class="gender">
                                     {{ "性別：".str_limit($post->gender, 1500) }}
